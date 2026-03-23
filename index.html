@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="logo/meu-logo-albastru-fara-scris.png">
+  <link rel="apple-touch-icon" href="logo/meu-logo-albastru-fara-scris.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEU Timisoara 2026 - Position Papers Upload</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#0b1626;--ink2:#1c2e4a;--ink3:#2e4a6e;--gold:#b8902a;--pale:#e8d49a;--rule:#d6dce8;--rdark:rgba(255,255,255,.09);--paper:#f7f6f2;--white:#fff;--muted:#8a96aa;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{height:100%;}
+    body{font-family:'Jost',sans-serif;background:var(--paper);color:var(--ink);min-height:100vh;display:grid;grid-template-columns:360px 1fr;}
+
+    /* LEFT */
+    .pl{background:var(--ink);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:48px 40px;overflow:hidden;}
+    .pl::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:36px 36px;pointer-events:none;}
+    .pl::after{content:'';position:absolute;bottom:-100px;right:-100px;width:360px;height:360px;border:1px solid rgba(184,144,42,.12);border-radius:50%;pointer-events:none;}
+    .li{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;}
+
+    .lt{display:inline-flex;align-items:center;align-self:flex-start;margin-bottom:44px;border:1px solid var(--rdark);border-radius:3px;overflow:hidden;}
+    .lb{padding:5px 13px;font-family:'Jost',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.32);background:transparent;border:none;cursor:pointer;transition:all .18s;}
+    .lb.on{background:var(--gold);color:#fff;}
+    .ls{width:1px;height:26px;background:var(--rdark);}
+
+    .ring{width:52px;height:52px;margin-bottom:28px;}
+    .ring svg{animation:spin 40s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    .lh{font-family:'Cormorant',serif;font-size:2.3rem;font-weight:300;line-height:1.18;color:#fff;margin-bottom:7px;}
+    .lh em{font-style:italic;color:var(--pale);}
+    .ls2{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.36);letter-spacing:.4px;margin-bottom:36px;line-height:1.5;}
+
+    .ml{list-style:none;border-top:1px solid var(--rdark);}
+    .mi{display:flex;align-items:flex-start;gap:11px;padding:13px 0;border-bottom:1px solid var(--rdark);}
+    .mic{flex-shrink:0;margin-top:1px;opacity:.42;}
+    .mil{display:block;font-size:.6rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:2px;}
+    .miv{font-size:.78rem;font-weight:300;color:rgba(255,255,255,.62);}
+
+    .lft{margin-top:auto;padding-top:24px;border-top:1px solid var(--rdark);}
+    .lfl{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:10px;}
+    .sg{margin-bottom:7px;}
+    .sgn{font-size:.76rem;font-weight:500;color:rgba(255,255,255,.58);display:block;}
+    .sgr{font-size:.67rem;font-weight:300;color:rgba(255,255,255,.26);}
+
+    /* RIGHT */
+    .pr{display:flex;flex-direction:column;min-height:100vh;}
+    .tb{height:50px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;padding:0 52px;flex-shrink:0;}
+    .tbl{font-size:.66rem;font-weight:500;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);}
+    .sp{display:flex;align-items:center;gap:6px;}
+    .sd{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:blink 2.5s ease-in-out infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+    .st{font-size:.65rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);}
+
+    /* Progress bar */
+    .progress-bar{height:2px;background:var(--rule);flex-shrink:0;}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--ink3));transition:width .4s ease;}
+
+    .rm{flex:1;padding:40px 52px;}
+    .fw{width:100%;max-width:580px;margin:0 auto;}
+
+    /* Steps */
+    .step{display:none;}
+    .step.active{display:block;}
+
+    .step-indicator{display:flex;align-items:center;gap:8px;margin-bottom:32px;}
+    .step-dot{width:6px;height:6px;border-radius:50%;background:var(--rule);transition:all .3s;}
+    .step-dot.done{background:var(--gold);}
+    .step-dot.current{background:var(--ink);width:20px;border-radius:3px;}
+    .step-label{font-size:.6rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-left:4px;}
+
+    .fe{display:flex;align-items:center;gap:11px;margin-bottom:13px;}
+    .fel{width:26px;height:1px;background:var(--gold);}
+    .fet{font-size:.63rem;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+
+    .ft{font-family:'Cormorant Garamond',serif;font-size:2.1rem;font-weight:600;color:var(--ink);line-height:1.15;letter-spacing:-.3px;margin-bottom:8px;}
+    .fd{font-size:.83rem;font-weight:300;color:var(--muted);line-height:1.65;margin-bottom:32px;}
+
+    .sec-sep{display:flex;align-items:center;gap:12px;margin:28px 0 20px;}
+    .sec-line{flex:1;height:1px;background:var(--rule);}
+    .sec-num{font-size:.58rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+
+    .fi{margin-bottom:22px;}
+    .fll{display:flex;align-items:center;gap:7px;margin-bottom:8px;}
+    .fll svg{color:var(--muted);flex-shrink:0;}
+    .flt{font-size:.66rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--ink2);}
+    .freq{color:var(--gold);font-size:.85rem;line-height:1;}
+
+    input[type="text"],input[type="email"],input[type="tel"],select,textarea{width:100%;padding:13px 14px;border:1px solid var(--rule);border-radius:0;font-family:'Jost',sans-serif;font-size:.88rem;color:var(--ink);background:#fff;outline:none;appearance:none;transition:border-color .18s,box-shadow .18s;}
+    input[type="text"]:focus,input[type="email"]:focus,input[type="tel"]:focus,select:focus,textarea:focus{border-color:var(--ink3);box-shadow:0 0 0 2px rgba(46,74,110,.07);}
+    input.err-field,select.err-field{border-color:#b22222 !important;}
+
+    select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%230b1626' stroke-width='1.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:38px;cursor:pointer;}
+
+    .fsh{margin-top:5px;font-size:.69rem;font-weight:300;color:var(--muted);line-height:1.5;}
+    .fsh.err{color:#b22222;font-weight:500;}
+
+    /* File upload zone */
+    .upload-zone{border:1px dashed var(--rule);padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s;background:#fff;position:relative;}
+    .upload-zone:hover,.upload-zone.drag-over{border-color:var(--gold);background:rgba(184,144,42,.03);}
+    .upload-zone.has-file{border-color:var(--ink3);border-style:solid;background:rgba(46,74,110,.03);}
+    .upload-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+    .uz-icon{margin:0 auto 12px;width:36px;height:36px;border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted);}
+    .uz-main{font-size:.8rem;font-weight:500;color:var(--ink2);margin-bottom:4px;}
+    .uz-sub{font-size:.68rem;font-weight:300;color:var(--muted);}
+    .uz-file-name{font-size:.78rem;font-weight:500;color:var(--ink3);margin-top:8px;word-break:break-all;}
+    .uz-size{font-size:.65rem;font-weight:300;color:var(--muted);}
+    .uz-check{display:none;width:20px;height:20px;border-radius:50%;background:#22c55e;margin:0 auto 10px;align-items:center;justify-content:center;}
+    .has-file .uz-check{display:flex;}
+    .has-file .uz-icon{display:none;}
+
+    /* Role selector */
+    .role-cards{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+    .role-card{padding:18px 16px;border:1px solid var(--rule);cursor:pointer;transition:all .2s;background:#fff;text-align:left;}
+    .role-card:first-child{border-right:none;}
+    .role-card:hover{background:rgba(184,144,42,.03);border-color:var(--gold);}
+    .role-card.selected{background:var(--ink);border-color:var(--ink);}
+    .role-card.selected .rc-title{color:#fff;}
+    .role-card.selected .rc-desc{color:rgba(255,255,255,.45);}
+    .role-card.selected .rc-dot{background:var(--gold);}
+    .rc-dot{width:6px;height:6px;border-radius:50%;background:var(--rule);margin-bottom:10px;transition:all .2s;}
+    .rc-title{font-size:.82rem;font-weight:600;color:var(--ink);margin-bottom:3px;letter-spacing:.3px;}
+    .rc-desc{font-size:.68rem;font-weight:300;color:var(--muted);line-height:1.4;}
+
+    /* Checkbox */
+    .check-wrap{display:flex;align-items:flex-start;gap:12px;padding:16px;border:1px solid var(--rule);background:#fff;cursor:pointer;transition:border-color .2s;}
+    .check-wrap:hover{border-color:var(--ink3);}
+    .check-wrap.checked{border-color:var(--gold);}
+    .cb{width:16px;height:16px;border:1px solid var(--rule);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+    .check-wrap.checked .cb{background:var(--gold);border-color:var(--gold);}
+    .cb-label{font-size:.78rem;font-weight:300;color:var(--ink2);line-height:1.6;}
+
+    /* Navigation buttons */
+    .btn-row{display:flex;gap:0;margin-top:8px;}
+    .bd{flex:1;padding:16px 20px;background:var(--ink);color:#fff;font-family:'Jost',sans-serif;font-size:.76rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;transition:background .2s,border-color .2s;}
+    .bd::before{content:'';position:absolute;left:0;top:0;height:100%;width:0%;background:var(--gold);transition:width .38s ease;z-index:0;}
+    .bd:hover::before{width:100%;}
+    .bd:hover{border-color:var(--gold);}
+    .bd>*{position:relative;z-index:1;}
+    .bd:disabled{opacity:.52;cursor:not-allowed;}
+    .bd:disabled::before{display:none;}
+    .bd-back{flex:0 0 auto;padding:16px 20px;background:transparent;color:var(--muted);font-family:'Jost',sans-serif;font-size:.76rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;border:1px solid var(--rule);border-right:none;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s;}
+    .bd-back:hover{border-color:var(--ink3);color:var(--ink);}
+    .sp2{width:14px;height:14px;border:1.5px solid rgba(255,255,255,.22);border-top-color:#fff;border-radius:50%;animation:spn .7s linear infinite;display:inline-block;}
+    @keyframes spn{to{transform:rotate(360deg);}}
+
+    /* Upload progress */
+    .upload-progress{display:none;margin-top:16px;}
+    .upload-progress.show{display:block;}
+    .up-label{font-size:.65rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between;}
+    .up-track{height:2px;background:var(--rule);}
+    .up-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--ink3));width:0%;transition:width .3s ease;}
+
+    /* Success overlay */
+    .success-overlay{display:none;position:fixed;inset:0;background:rgba(11,22,38,.92);z-index:100;align-items:center;justify-content:center;}
+    .success-overlay.show{display:flex;}
+    .success-box{background:var(--paper);max-width:440px;width:90%;padding:48px 40px;text-align:center;position:relative;}
+    .success-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--ink3));}
+    .success-icon{width:52px;height:52px;border:1px solid rgba(34,197,94,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+    .success-title{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:600;color:var(--ink);margin-bottom:10px;}
+    .success-desc{font-size:.82rem;font-weight:300;color:var(--muted);line-height:1.7;margin-bottom:28px;}
+    .success-files{display:flex;flex-direction:column;gap:6px;margin-bottom:24px;}
+    .success-file{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#fff;border:1px solid var(--rule);text-align:left;}
+    .sf-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;}
+    .sf-name{font-size:.72rem;font-weight:400;color:var(--ink2);word-break:break-all;}
+    .success-close{padding:11px 28px;background:var(--ink);color:#fff;font-family:'Jost',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s;}
+    .success-close:hover{background:var(--gold);}
+
+    .rf{height:50px;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;padding:0 52px;flex-shrink:0;}
+    .rfl{font-size:.67rem;font-weight:300;color:var(--muted);}
+    .rfr{font-size:.63rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);opacity:.55;}
+
+    @media(max-width:960px){
+      body{grid-template-columns:1fr;}
+      .pl{position:static;height:auto;padding:36px 28px;order:2;}
+      .pr{order:1;}
+      .lft{display:none;}
+      .ring{display:none;}
+      .lh{font-size:1.75rem;}
+      .ls2{margin-bottom:20px;}
+      .ml{display:grid;grid-template-columns:1fr 1fr;}
+    }
+    @media(max-width:640px){
+      .rm{padding:28px 20px;}
+      .tb,.rf{padding:0 20px;}
+      .ft{font-size:1.75rem;}
+      .role-cards{grid-template-columns:1fr;}
+      .role-card:first-child{border-right:1px solid var(--rule);border-bottom:none;}
+      .btn-row{flex-direction:column-reverse;}
+      .bd-back{border-right:1px solid var(--rule);}
+      .success-box{padding:32px 24px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- LEFT PANEL -->
+<aside class="pl">
+  <div class="li">
+    <div class="lt">
+      <button class="lb" onclick="setLang('en')" id="btn-en">EN</button>
+      <div class="ls"></div>
+      <button class="lb on" onclick="setLang('ro')" id="btn-ro">RO</button>
+    </div>
+
+    <div class="ring">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none">
+        <circle cx="26" cy="26" r="22" stroke="rgba(184,144,42,.18)" stroke-width=".75"/>
+        <g fill="#b8902a" opacity=".72">
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(0 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(30 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(60 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(90 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(120 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(150 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(180 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(210 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(240 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(270 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(300 26 26)"/>
+          <polygon points="26,5 26.75,7.2 29.1,7.2 27.2,8.55 27.95,10.75 26,9.4 24.05,10.75 24.8,8.55 22.9,7.2 25.25,7.2" transform="rotate(330 26 26)"/>
+        </g>
+      </svg>
+    </div>
+
+    <h2 class="lh">Model<br/>European<br/>Union <em>Timisoara</em></h2>
+    <p class="ls2" id="lsub">Prima Ediție · 2026 · Position Papers</p>
+
+    <ul class="ml">
+      <li class="mi">
+        <svg class="mic" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.1"><rect x="1" y="2" width="11" height="10" rx=".8"/><path d="M1 5.5h11M4 1v2.5M9 1v2.5"/></svg>
+        <div><span class="mil" id="m1">Perioadă</span><span class="miv">25–29 March 2026</span></div>
+      </li>
+      <li class="mi">
+        <svg class="mic" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.1"><path d="M6.5 1C4.57 1 3 2.57 3 4.5c0 2.8 3.5 7 3.5 7s3.5-4.2 3.5-7C10 2.57 8.43 1 6.5 1z"/><circle cx="6.5" cy="4.5" r="1.2"/></svg>
+        <div><span class="mil" id="m2">Locație</span><span class="miv">Timisoara, Romania</span></div>
+      </li>
+      <li class="mi">
+        <svg class="mic" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.1"><path d="M3 1h7l2 2v9H3V1z"/><path d="M8 1v3h2M4.5 6h4M4.5 8h4M4.5 10h2"/></svg>
+        <div><span class="mil" id="m3">Format</span><span class="miv" id="m3v">2 Position Papers per participant</span></div>
+      </li>
+      <li class="mi">
+        <svg class="mic" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.1"><circle cx="6.5" cy="6.5" r="5.5"/><path d="M6.5 1.2S4.2 3 4.2 6.5s2.3 5.3 2.3 5.3M6.5 1.2S8.8 3 8.8 6.5 6.5 11.8 6.5 11.8M1.2 6.5h10.6"/></svg>
+        <div><span class="mil" id="m4">Instituție</span><span class="miv">Universitatea de Vest din Timisoara</span></div>
+      </li>
+    </ul>
+
+    <div class="lft">
+      <div class="lfl" id="siglabel">Semnatari Autorizați</div>
+      <div class="sg"><span class="sgn">Viorel Lambu</span><span class="sgr" id="sr1">Director General</span></div>
+      <div class="sg"><span class="sgn">Paula Iovescu</span><span class="sgr" id="sr2">Manager de Proiect</span></div>
+    </div>
+  </div>
+</aside>
+
+<!-- RIGHT PANEL -->
+<div class="pr">
+  <div class="tb">
+    <span class="tbl" id="tblabel">Sistem de Încărcare Position Papers</span>
+    <div class="sp">
+      <div class="sd"></div>
+      <span class="st" id="stlabel">Deschis</span>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:25%"></div></div>
+
+  <div class="rm">
+    <div class="fw">
+
+      <!-- STEP 1: Personal Info + Role -->
+      <div class="step active" id="step1">
+        <div class="step-indicator">
+          <div class="step-dot current" id="dot1"></div>
+          <div class="step-dot" id="dot2"></div>
+          <div class="step-dot" id="dot3"></div>
+          <div class="step-dot" id="dot4"></div>
+          <span class="step-label" id="step-label">Pasul 1 din 4</span>
+        </div>
+
+        <div class="fe"><div class="fel"></div><div class="fet" id="eyebrow1">Informații Personale</div></div>
+        <h1 class="ft" id="ft1">Date de<br/>Identificare</h1>
+        <p class="fd" id="fd1">Completează datele tale de contact și selectează rolul în cadrul simulării MEU Timisoara 2026.</p>
+
+        <div class="fi">
+          <div class="fll">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M1 10c0-2.2 1.79-4 4-4h3c2.2 0 4 1.8 4 4M6.5 1C4.57 1 3 2.57 3 4.5S4.57 8 6.5 8 10 6.43 10 4.5 8.43 1 6.5 1z"/></svg>
+            <span class="flt" id="l-email">Adresă de Email</span><span class="freq">*</span>
+          </div>
+          <input type="email" id="email" placeholder="adresa@email.com" autocomplete="email" />
+          <div class="fsh" id="hint-email">Vei primi confirmarea la această adresă</div>
+        </div>
+
+        <div class="fi">
+          <div class="fll">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="6.5" cy="4" r="2.2"/><path d="M1 11.5c0-2.4 2.46-4.3 5.5-4.3s5.5 1.9 5.5 4.3"/></svg>
+            <span class="flt" id="l-name">Nume Complet</span><span class="freq">*</span>
+          </div>
+          <input type="text" id="fullname" placeholder="Prenume Nume" maxlength="80" autocomplete="name" />
+          <div class="fsh" id="hint-name">Exact ca pe documentul de identitate</div>
+        </div>
+
+        <div class="fi">
+          <div class="fll">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M2.5 2h2l1 2.5-1.5 1a7 7 0 003.5 3.5l1-1.5L11 8.5v2C11 11 9.5 12 9.5 12 5 12 1 8 1 3.5 1 3.5 2 2 2.5 2z"/></svg>
+            <span class="flt" id="l-phone">Telefon</span>
+            <span style="font-size:.6rem;font-weight:300;color:var(--muted);margin-left:4px;" id="opt-label">(opțional)</span>
+          </div>
+          <input type="tel" id="phone" placeholder="+40 7xx xxx xxx" autocomplete="tel" />
+        </div>
+
+        <div class="sec-sep"><div class="sec-line"></div><div class="sec-num" id="role-sec">Rol în Simulare</div><div class="sec-line"></div></div>
+
+        <div class="fi">
+          <div class="fll">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><rect x="1" y="3.5" width="11" height="8" rx=".7"/><path d="M4 3.5V2.8a2.5 2.5 0 015 0v.7"/></svg>
+            <span class="flt" id="l-role">Rol</span><span class="freq">*</span>
+          </div>
+          <div class="role-cards">
+            <div class="role-card" id="card-minister" onclick="selectRole('Minister')">
+              <div class="rc-dot"></div>
+              <div class="rc-title" id="rc-min">Ministru</div>
+              <div class="rc-desc" id="rc-min-d">Reprezinți un stat membru în Consiliu</div>
+            </div>
+            <div class="role-card" id="card-mep" onclick="selectRole('MEP')">
+              <div class="rc-dot"></div>
+              <div class="rc-title">MEP</div>
+              <div class="rc-desc" id="rc-mep-d">Europarlamentar în PE</div>
+            </div>
+          </div>
+          <div class="fsh" id="hint-role">Selectarea rolului determină pașii următori</div>
+        </div>
+
+        <div class="btn-row">
+          <button class="bd" id="next1" onclick="goStep(2)">
+            <span id="next1txt">Continuă</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 7h10M7.5 3l4.5 4-4.5 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Delegation -->
+      <div class="step" id="step2">
+        <div class="step-indicator">
+          <div class="step-dot done" id="dot1b"></div>
+          <div class="step-dot current" id="dot2b"></div>
+          <div class="step-dot" id="dot3b"></div>
+          <div class="step-dot" id="dot4b"></div>
+          <span class="step-label" id="step-label2">Pasul 2 din 4</span>
+        </div>
+
+        <div class="fe"><div class="fel"></div><div class="fet" id="eyebrow2">Delegație</div></div>
+        <h1 class="ft" id="ft2">Reprezentare</h1>
+        <p class="fd" id="fd2">Selectează entitatea pe care o reprezinți în cadrul simulării.</p>
+
+        <!-- Minister: country -->
+        <div id="minister-section">
+          <div class="sec-sep"><div class="sec-line"></div><div class="sec-num" id="country-sec">Stat Membru</div><div class="sec-line"></div></div>
+          <div class="fi">
+            <div class="fll">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M6.5 1C4.57 1 3 2.57 3 4.5c0 2.8 3.5 7 3.5 7s3.5-4.2 3.5-7C10 2.57 8.43 1 6.5 1z"/><circle cx="6.5" cy="4.5" r="1.2"/></svg>
+              <span class="flt" id="l-country">Țara Reprezentată</span><span class="freq">*</span>
+            </div>
+            <select id="country">
+              <option value="" id="cph">Alege țara...</option>
+              <optgroup label="── UE ──">
+              <option>Austria</option><option>Belgium</option><option>Bulgaria</option>
+              <option>Croatia</option><option>Cyprus</option><option>Czech Republic</option>
+              <option>Denmark</option><option>Estonia</option><option>Finland</option>
+              <option>France</option><option>Germany</option><option>Greece</option>
+              <option>Hungary</option><option>Ireland</option><option>Italy</option>
+              <option>Latvia</option><option>Lithuania</option><option>Luxembourg</option>
+              <option>Malta</option><option>Netherlands</option><option>Poland</option>
+              <option>Portugal</option><option>Romania</option><option>Slovakia</option>
+              <option>Slovenia</option><option>Spain</option><option>Sweden</option>
+              </optgroup>
+              <optgroup label="── Non-UE ──">
+              <option>Albania</option><option>Andorra</option><option>Armenia</option>
+              <option>Azerbaijan</option><option>Belarus</option><option>Bosnia and Herzegovina</option>
+              <option>Georgia</option><option>Iceland</option><option>Kosovo</option>
+              <option>Liechtenstein</option><option>Moldova</option><option>Monaco</option>
+              <option>Montenegro</option><option>North Macedonia</option><option>Norway</option>
+              <option>Russia</option><option>San Marino</option><option>Serbia</option>
+              <option>Switzerland</option><option>Turkey</option><option>Ukraine</option>
+              <option>United Kingdom</option><option>Vatican City</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+
+        <!-- MEP: group -->
+        <div id="mep-section" style="display:none">
+          <div class="sec-sep"><div class="sec-line"></div><div class="sec-num" id="group-sec">Grup Politic</div><div class="sec-line"></div></div>
+          <div class="fi">
+            <div class="fll">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="4" cy="4" r="1.8"/><circle cx="9" cy="4" r="1.8"/><path d="M1 11c0-1.7 1.34-3 3-3s3 1.3 3 3M7.5 8.2c.47-.13.97-.2 1.5-.2 1.66 0 3 1.3 3 3"/></svg>
+              <span class="flt" id="l-group">Grupul Politic</span><span class="freq">*</span>
+            </div>
+            <select id="group">
+              <option value="" id="gph">Alege grupul...</option>
+              <option>EPP</option><option>S&amp;D</option><option>Greens</option>
+              <option>Renew Europe</option><option>The Left</option>
+              <option>ECR</option><option>ESN</option><option>Patriots</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="bd-back" onclick="goStep(1)">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 6H2M5.5 2.5L2 6l3.5 3.5"/></svg>
+            <span id="backTxt1">Înapoi</span>
+          </button>
+          <button class="bd" onclick="goStep(3)">
+            <span id="next2txt">Continuă</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 7h10M7.5 3l4.5 4-4.5 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Upload -->
+      <div class="step" id="step3">
+        <div class="step-indicator">
+          <div class="step-dot done"></div>
+          <div class="step-dot done"></div>
+          <div class="step-dot current"></div>
+          <div class="step-dot"></div>
+          <span class="step-label" id="step-label3">Pasul 3 din 4</span>
+        </div>
+
+        <div class="fe"><div class="fel"></div><div class="fet" id="eyebrow3">Documente</div></div>
+        <h1 class="ft" id="ft3">Încarcă<br/>Position Papers</h1>
+        <p class="fd" id="fd3">Încarcă cele două position papers — câte unul pentru fiecare directivă. Format acceptat: PDF. Dimensiune maximă: 10 MB per fișier.</p>
+
+        <!-- File 1 -->
+        <div class="sec-sep"><div class="sec-line"></div><div class="sec-num" id="sec-f1">Topic 1 · Coridorul Militar Schengen</div><div class="sec-line"></div></div>
+        <div class="fi">
+          <div class="fll">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M3 1h7l2 2v9H3V1z"/><path d="M8 1v3h2"/></svg>
+            <span class="flt" id="l-file1">Position Paper — Topic 1</span><span class="freq">*</span>
+          </div>
+          <div class="upload-zone" id="zone1" onclick="triggerFile(1)">
+            <input type="file" id="file1" accept=".pdf,application/pdf" onchange="onFileChange(1,this)" onclick="event.stopPropagation()" />
+            <div class="uz-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="1.5"><polyline points="2,5 4,7 8,3"/></svg>
+            </div>
+            <div class="uz-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12h10M8 3v7M5 6l3-3 3 3"/></svg>
+            </div>
+            <div class="uz-main" id="uz1-main">Trage fișierul sau click pentru a selecta</div>
+            <div class="uz-sub" id="uz1-sub">PDF · max. 10 MB</div>
+            <div class="uz-file-name" id="uz1-name"></div>
+            <div class="uz-size" id="uz1-size"></div>
+          </div>
+          <div class="fsh" id="hint-file1">Directiva privind Coridorul Militar Schengen</div>
+        </div>
+
+        <!-- File 2 -->
+        <div class="sec-sep"><div class="sec-line"></div><div class="sec-num" id="sec-f2">Topic 2 · Portal Medical Centralizat</div><div class="sec-line"></div></div>
+        <div class="fi">
+          <div class="fll">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><path d="M3 1h7l2 2v9H3V1z"/><path d="M8 1v3h2"/></svg>
+            <span class="flt" id="l-file2">Position Paper — Topic 2</span><span class="freq">*</span>
+          </div>
+          <div class="upload-zone" id="zone2" onclick="triggerFile(2)">
+            <input type="file" id="file2" accept=".pdf,application/pdf" onchange="onFileChange(2,this)" onclick="event.stopPropagation()" />
+            <div class="uz-check">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="#fff" stroke-width="1.5"><polyline points="2,5 4,7 8,3"/></svg>
+            </div>
+            <div class="uz-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 12h10M8 3v7M5 6l3-3 3 3"/></svg>
+            </div>
+            <div class="uz-main" id="uz2-main">Trage fișierul sau click pentru a selecta</div>
+            <div class="uz-sub" id="uz2-sub">PDF · max. 10 MB</div>
+            <div class="uz-file-name" id="uz2-name"></div>
+            <div class="uz-size" id="uz2-size"></div>
+          </div>
+          <div class="fsh" id="hint-file2">Directiva privind portalul centralizat de programări medicale</div>
+        </div>
+
+        <div class="btn-row">
+          <button class="bd-back" onclick="goStep(2)">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 6H2M5.5 2.5L2 6l3.5 3.5"/></svg>
+            <span id="backTxt2">Înapoi</span>
+          </button>
+          <button class="bd" onclick="goStep(4)">
+            <span id="next3txt">Continuă</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 7h10M7.5 3l4.5 4-4.5 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Confirm + Submit -->
+      <div class="step" id="step4">
+        <div class="step-indicator">
+          <div class="step-dot done"></div>
+          <div class="step-dot done"></div>
+          <div class="step-dot done"></div>
+          <div class="step-dot current"></div>
+          <span class="step-label" id="step-label4">Pasul 4 din 4</span>
+        </div>
+
+        <div class="fe"><div class="fel"></div><div class="fet" id="eyebrow4">Confirmare</div></div>
+        <h1 class="ft" id="ft4">Verificare<br/>Finală</h1>
+        <p class="fd" id="fd4">Verifică detaliile submisiei tale înainte de a trimite documentele.</p>
+
+        <!-- Summary -->
+        <div class="sec-sep"><div class="sec-line"></div><div class="sec-num" id="sum-sec">Sumar Submisie</div><div class="sec-line"></div></div>
+
+        <div style="border:1px solid var(--rule);background:#fff;margin-bottom:22px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+            <div style="padding:14px 16px;border-right:1px solid var(--rule);">
+              <div style="font-size:.58rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;" id="sum-l-name">Nume</div>
+              <div style="font-size:.82rem;font-weight:400;color:var(--ink);" id="sum-name">—</div>
+            </div>
+            <div style="padding:14px 16px;">
+              <div style="font-size:.58rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;" id="sum-l-role">Rol</div>
+              <div style="font-size:.82rem;font-weight:400;color:var(--ink);" id="sum-role">—</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule);">
+            <div style="padding:14px 16px;border-right:1px solid var(--rule);">
+              <div style="font-size:.58rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;" id="sum-l-deleg">Delegație</div>
+              <div style="font-size:.82rem;font-weight:400;color:var(--ink);" id="sum-deleg">—</div>
+            </div>
+            <div style="padding:14px 16px;">
+              <div style="font-size:.58rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:4px;" id="sum-l-email">Email</div>
+              <div style="font-size:.82rem;font-weight:400;color:var(--ink);word-break:break-all;" id="sum-email">—</div>
+            </div>
+          </div>
+          <div style="padding:14px 16px;border-bottom:1px solid var(--rule);">
+            <div style="font-size:.58rem;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;" id="sum-l-files">Fișiere</div>
+            <div style="display:flex;flex-direction:column;gap:5px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
+                <span style="font-size:.72rem;color:var(--ink2);" id="sum-f1">—</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div>
+                <span style="font-size:.72rem;color:var(--ink2);" id="sum-f2">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="fi">
+          <div class="check-wrap" id="confirm-wrap" onclick="toggleConfirm()">
+            <div class="cb" id="cb-box">
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none" stroke="#fff" stroke-width="1.5" id="cb-check" style="display:none"><polyline points="1,4 3.2,6.2 7,2"/></svg>
+            </div>
+            <span class="cb-label" id="confirm-label">Confirm că aceste position papers reprezintă munca mea proprie și corespund rolului selectat în cadrul simulării MEU Timisoara 2026.</span>
+          </div>
+          <div class="fsh" id="hint-confirm"></div>
+        </div>
+
+        <!-- Upload progress -->
+        <div class="upload-progress" id="upload-progress">
+          <div class="up-label"><span id="up-status">Se încarcă fișierele...</span><span id="up-pct">0%</span></div>
+          <div class="up-track"><div class="up-fill" id="up-fill"></div></div>
+        </div>
+
+        <div class="btn-row" style="margin-top:8px;">
+          <button class="bd-back" onclick="goStep(3)" id="backBtn4">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M10 6H2M5.5 2.5L2 6l3.5 3.5"/></svg>
+            <span id="backTxt3">Înapoi</span>
+          </button>
+          <button class="bd" id="submitBtn" onclick="submitAll()">
+            <span id="btnText">Trimite Documentele</span>
+            <svg id="btnIcon" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 7h10M7.5 3l4.5 4-4.5 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="rf">
+    <span class="rfl">MEU Timisoara 2026 · Universitatea de Vest din Timisoara</span>
+    <span class="rfr" id="footr">Patronaj Parlamentul European</span>
+  </div>
+</div>
+
+<!-- SUCCESS -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <div class="success-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="#22c55e" stroke-width="1.8"><polyline points="4,11 8.5,15.5 18,6"/></svg>
+    </div>
+    <div class="success-title" id="succ-title">Documente Trimise</div>
+    <p class="success-desc" id="succ-desc">Position papers-urile tale au fost încărcate cu succes în sistemul MEU Timisoara 2026.</p>
+    <div class="success-files">
+      <div class="success-file"><div class="sf-dot"></div><span class="sf-name" id="succ-f1"></span></div>
+      <div class="success-file"><div class="sf-dot"></div><span class="sf-name" id="succ-f2"></span></div>
+    </div>
+    <button class="success-close" onclick="location.reload()" id="succ-btn">Închide</button>
+  </div>
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxStNpeNW9OgnHkiB9rmp_JFh9iV42aZVaNcs62qEhIXzMWyXdI5Bp-9Xrh3Eii7ipYEg/exec';
+
+let currentStep = 1;
+let selectedRole = '';
+let confirmed = false;
+let lang = 'ro';
+
+const progressMap = { 1:25, 2:50, 3:75, 4:100 };
+
+const T = {
+  ro: {
+    lsub:'Prima Ediție · 2026 · Position Papers',
+    m1:'Perioadă', m2:'Locație', m3v:'2 Position Papers per participant', m4:'Instituție',
+    siglabel:'Semnatari Autorizați', sr2:'Manager de Proiect',
+    tblabel:'Sistem de Încărcare Position Papers', stlabel:'Deschis',
+    eyebrow1:'Informații Personale', ft1:'Date de<br/>Identificare',
+    fd1:'Completează datele tale de contact și selectează rolul în cadrul simulării MEU Timisoara 2026.',
+    eyebrow2:'Delegație', ft2:'Reprezentare',
+    fd2:'Selectează entitatea pe care o reprezinți în cadrul simulării.',
+    eyebrow3:'Documente', ft3:'Încarcă<br/>Position Papers',
+    fd3:'Încarcă cele două position papers — câte unul pentru fiecare directivă. Format acceptat: PDF. Dimensiune maximă: 10 MB per fișier.',
+    eyebrow4:'Confirmare', ft4:'Verificare<br/>Finală',
+    fd4:'Verifică detaliile submisiei tale înainte de a trimite documentele.',
+    'l-email':'Adresă de Email','hint-email':'Vei primi confirmarea la această adresă',
+    'l-name':'Nume Complet','hint-name':'Exact ca pe documentul de identitate',
+    'l-phone':'Telefon','opt-label':'(opțional)',
+    'role-sec':'Rol în Simulare','l-role':'Rol','hint-role':'Selectarea rolului determină pașii următori',
+    'rc-min':'Ministru','rc-min-d':'Reprezinți un stat membru în Consiliu','rc-mep-d':'Europarlamentar în PE',
+    'country-sec':'Stat Membru','l-country':'Țara Reprezentată','cph':'Alege țara...',
+    'group-sec':'Grup Politic','l-group':'Grupul Politic','gph':'Alege grupul...',
+    'sec-f1':'Topic 1 · Coridorul Militar Schengen','l-file1':'Position Paper — Topic 1','hint-file1':'Directiva privind Coridorul Militar Schengen',
+    'sec-f2':'Topic 2 · Portal Medical Centralizat','l-file2':'Position Paper — Topic 2','hint-file2':'Directiva privind portalul centralizat de programări medicale',
+    'uz-main':'Trage fișierul sau click pentru a selecta','uz-sub':'PDF · max. 10 MB',
+    'sum-sec':'Sumar Submisie','sum-l-name':'Nume','sum-l-role':'Rol','sum-l-deleg':'Delegație','sum-l-email':'Email','sum-l-files':'Fișiere',
+    'confirm-label':'Confirm că aceste position papers reprezintă munca mea proprie și corespund rolului selectat în cadrul simulării MEU Timisoara 2026.',
+    'step-label':'Pasul 1 din 4','step-label2':'Pasul 2 din 4','step-label3':'Pasul 3 din 4','step-label4':'Pasul 4 din 4',
+    next1txt:'Continuă',next2txt:'Continuă',next3txt:'Continuă',
+    backTxt1:'Înapoi',backTxt2:'Înapoi',backTxt3:'Înapoi',
+    btnText:'Trimite Documentele',btnSending:'Se trimite...',
+    footr:'Patronaj Parlamentul European',
+    'succ-title':'Documente Trimise','succ-btn':'Închide',
+    'succ-desc':'Position papers-urile tale au fost încărcate cu succes în sistemul MEU Timisoara 2026.',
+    'up-status-1':'Se încarcă fișierul 1/2...','up-status-2':'Se încarcă fișierul 2/2...','up-status-done':'Finalizat',
+    errEmail:'Introdu o adresă de email validă.',errName:'Introdu numele complet.',errRole:'Selectează un rol.',
+    errCountry:'Selectează țara reprezentată.',errGroup:'Selectează grupul politic.',
+    errFile1:'Încarcă Position Paper pentru Topic 1.',errFile2:'Încarcă Position Paper pentru Topic 2.',
+    errPdf:'Acceptăm doar fișiere PDF.',errSize:'Fișierul depășește limita de 10 MB.',
+    errConfirm:'Trebuie să confirmi înainte de a trimite.',
+  },
+  en: {
+    lsub:'First Edition · 2026 · Position Papers',
+    m1:'Dates', m2:'Location', m3v:'2 Position Papers per participant', m4:'Institution',
+    siglabel:'Authorized Signatories', sr2:'Project Manager',
+    tblabel:'Position Papers Upload System', stlabel:'Open',
+    eyebrow1:'Personal Information', ft1:'Identification<br/>Details',
+    fd1:'Fill in your contact details and select your role in the MEU Timisoara 2026 simulation.',
+    eyebrow2:'Delegation', ft2:'Representation',
+    fd2:'Select the entity you represent in the simulation.',
+    eyebrow3:'Documents', ft3:'Upload<br/>Position Papers',
+    fd3:'Upload both position papers — one for each directive. Accepted format: PDF only. Maximum size: 10 MB per file.',
+    eyebrow4:'Confirmation', ft4:'Final<br/>Review',
+    fd4:'Review your submission details before sending the documents.',
+    'l-email':'Email Address','hint-email':'You will receive confirmation at this address',
+    'l-name':'Full Name','hint-name':'Exactly as on your identity document',
+    'l-phone':'Phone','opt-label':'(optional)',
+    'role-sec':'Role in Simulation','l-role':'Role','hint-role':'Role selection determines the next steps',
+    'rc-min':'Minister','rc-min-d':'You represent a Member State in the Council','rc-mep-d':'Member of the European Parliament',
+    'country-sec':'Member State','l-country':'Country Represented','cph':'Select country...',
+    'group-sec':'Political Group','l-group':'Political Group','gph':'Select group...',
+    'sec-f1':'Topic 1 · Military Schengen Corridor','l-file1':'Position Paper — Topic 1','hint-file1':'Directive on the Military Schengen Corridor',
+    'sec-f2':'Topic 2 · Centralised Medical Portal','l-file2':'Position Paper — Topic 2','hint-file2':'Directive on facilitating access to medical investigations through a centralised appointment portal',
+    'uz-main':'Drag & drop or click to select','uz-sub':'PDF · max. 10 MB',
+    'sum-sec':'Submission Summary','sum-l-name':'Name','sum-l-role':'Role','sum-l-deleg':'Delegation','sum-l-email':'Email','sum-l-files':'Files',
+    'confirm-label':'I confirm that these position papers are my own work and correspond to the role selected above in the MEU Timisoara 2026 simulation.',
+    'step-label':'Step 1 of 4','step-label2':'Step 2 of 4','step-label3':'Step 3 of 4','step-label4':'Step 4 of 4',
+    next1txt:'Continue',next2txt:'Continue',next3txt:'Continue',
+    backTxt1:'Back',backTxt2:'Back',backTxt3:'Back',
+    btnText:'Submit Documents',btnSending:'Sending...',
+    footr:'European Parliament Patronage',
+    'succ-title':'Documents Submitted','succ-btn':'Close',
+    'succ-desc':'Your position papers have been successfully uploaded to the MEU Timisoara 2026 system.',
+    'up-status-1':'Uploading file 1/2...','up-status-2':'Uploading file 2/2...','up-status-done':'Complete',
+    errEmail:'Enter a valid email address.',errName:'Enter your full name.',errRole:'Please select a role.',
+    errCountry:'Select the country you represent.',errGroup:'Select your political group.',
+    errFile1:'Upload your Position Paper for Topic 1.',errFile2:'Upload your Position Paper for Topic 2.',
+    errPdf:'Only PDF files are accepted.',errSize:'File exceeds the 10 MB limit.',
+    errConfirm:'You must confirm before submitting.',
+  }
+};
+
+function setLang(l) {
+  lang = l;
+  document.getElementById('btn-en').classList.toggle('on', l==='en');
+  document.getElementById('btn-ro').classList.toggle('on', l==='ro');
+  const t = T[l];
+  const simple = ['lsub','m1','m2','m3v','m4','siglabel','sr2','tblabel','stlabel',
+    'eyebrow1','eyebrow2','eyebrow3','eyebrow4','footr',
+    'l-email','hint-email','l-name','hint-name','l-phone','opt-label','role-sec','l-role','hint-role',
+    'rc-min','rc-min-d','rc-mep-d',
+    'country-sec','l-country','cph','group-sec','l-group','gph',
+    'sec-f1','l-file1','hint-file1','sec-f2','l-file2','hint-file2',
+    'sum-sec','sum-l-name','sum-l-role','sum-l-deleg','sum-l-email','sum-l-files','confirm-label',
+    'step-label','step-label2','step-label3','step-label4',
+    'next1txt','next2txt','next3txt','backTxt1','backTxt2','backTxt3','btnText',
+    'succ-title','succ-btn','succ-desc','footr'];
+  simple.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && t[id] !== undefined) el.textContent = t[id];
+  });
+  ['ft1','ft2','ft3','ft4'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && t[id]) el.innerHTML = t[id];
+  });
+  ['fd1','fd2','fd3','fd4'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el && t[id]) el.textContent = t[id];
+  });
+  // Update upload zone text
+  ['1','2'].forEach(n => {
+    const m = document.getElementById('uz'+n+'-main');
+    const s = document.getElementById('uz'+n+'-sub');
+    if (m) m.textContent = t['uz-main'];
+    if (s) s.textContent = t['uz-sub'];
+  });
+}
+
+function selectRole(role) {
+  selectedRole = role;
+  document.getElementById('card-minister').classList.toggle('selected', role==='Minister');
+  document.getElementById('card-mep').classList.toggle('selected', role==='MEP');
+  document.getElementById('hint-role').textContent = '';
+  document.getElementById('hint-role').className = 'fsh';
+}
+
+function goStep(n) {
+  const t = T[lang];
+  if (n > currentStep) {
+    // Validate current step
+    if (currentStep === 1) {
+      const email = document.getElementById('email').value.trim();
+      const name = document.getElementById('fullname').value.trim();
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRe.test(email)) {
+        markErr('email','hint-email',t.errEmail); return;
+      }
+      if (!name) { markErr('fullname','hint-name',t.errName); return; }
+      if (!selectedRole) {
+        document.getElementById('hint-role').textContent = t.errRole;
+        document.getElementById('hint-role').className = 'fsh err'; return;
+      }
+    }
+    if (currentStep === 2) {
+      if (selectedRole === 'Minister') {
+        if (!document.getElementById('country').value) { markErr('country',null,t.errCountry); return; }
+      } else {
+        if (!document.getElementById('group').value) { markErr('group',null,t.errGroup); return; }
+      }
+    }
+    if (currentStep === 3) {
+      if (!document.getElementById('file1').files[0]) {
+        document.getElementById('hint-file1').textContent = t.errFile1;
+        document.getElementById('hint-file1').className = 'fsh err'; return;
+      }
+      if (!document.getElementById('file2').files[0]) {
+        document.getElementById('hint-file2').textContent = t.errFile2;
+        document.getElementById('hint-file2').className = 'fsh err'; return;
+      }
+    }
+  }
+
+  // Update delegation sections visibility
+  if (n === 2) {
+    document.getElementById('minister-section').style.display = selectedRole==='Minister' ? 'block' : 'none';
+    document.getElementById('mep-section').style.display = selectedRole==='MEP' ? 'block' : 'none';
+  }
+
+  // Populate summary
+  if (n === 4) populateSummary();
+
+  document.getElementById('step'+currentStep).classList.remove('active');
+  currentStep = n;
+  document.getElementById('step'+currentStep).classList.add('active');
+  document.getElementById('progressFill').style.width = progressMap[n] + '%';
+  window.scrollTo(0,0);
+}
+
+function markErr(fieldId, hintId, msg) {
+  const el = document.getElementById(fieldId);
+  if (el) el.classList.add('err-field');
+  if (hintId) {
+    const h = document.getElementById(hintId);
+    if (h) { h.textContent = msg; h.className = 'fsh err'; }
+  }
+  if (el) el.addEventListener('input', () => {
+    el.classList.remove('err-field');
+    const h = document.getElementById(hintId);
+    if (h) { h.className = 'fsh'; h.textContent = T[lang][hintId] || ''; }
+  }, { once: true });
+}
+
+function triggerFile(n) { document.getElementById('file'+n).click(); }
+
+function onFileChange(n, input) {
+  const t = T[lang];
+  const file = input.files[0];
+  const zone = document.getElementById('zone'+n);
+  const nameEl = document.getElementById('uz'+n+'-name');
+  const sizeEl = document.getElementById('uz'+n+'-size');
+  const hint = document.getElementById('hint-file'+n);
+
+  if (!file) return;
+  if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+    hint.textContent = t.errPdf; hint.className = 'fsh err';
+    input.value = ''; zone.classList.remove('has-file'); return;
+  }
+  if (file.size > 10 * 1024 * 1024) {
+    hint.textContent = t.errSize; hint.className = 'fsh err';
+    input.value = ''; zone.classList.remove('has-file'); return;
+  }
+  hint.textContent = T[lang]['hint-file'+n]; hint.className = 'fsh';
+  zone.classList.add('has-file');
+  nameEl.textContent = file.name;
+  sizeEl.textContent = (file.size / (1024*1024)).toFixed(2) + ' MB';
+}
+
+function toggleConfirm() {
+  confirmed = !confirmed;
+  document.getElementById('confirm-wrap').classList.toggle('checked', confirmed);
+  document.getElementById('cb-check').style.display = confirmed ? 'block' : 'none';
+  if (confirmed) {
+    document.getElementById('hint-confirm').textContent = '';
+    document.getElementById('hint-confirm').className = 'fsh';
+  }
+}
+
+function populateSummary() {
+  document.getElementById('sum-name').textContent = document.getElementById('fullname').value.trim();
+  document.getElementById('sum-role').textContent = selectedRole === 'Minister' ? T[lang]['rc-min'] : 'MEP';
+  const deleg = selectedRole === 'Minister'
+    ? document.getElementById('country').value
+    : document.getElementById('group').value;
+  document.getElementById('sum-deleg').textContent = deleg || '—';
+  document.getElementById('sum-email').textContent = document.getElementById('email').value.trim();
+  const f1 = document.getElementById('file1').files[0];
+  const f2 = document.getElementById('file2').files[0];
+  document.getElementById('sum-f1').textContent = f1 ? f1.name : '—';
+  document.getElementById('sum-f2').textContent = f2 ? f2.name : '—';
+}
+
+function setProgress(pct, statusKey) {
+  const t = T[lang];
+  document.getElementById('up-fill').style.width = pct + '%';
+  document.getElementById('up-pct').textContent = pct + '%';
+  if (statusKey) document.getElementById('up-status').textContent = t[statusKey];
+}
+
+function fileToBase64(file) {
+  return new Promise((res, rej) => {
+    const reader = new FileReader();
+    reader.onload = () => res(reader.result.split(',')[1]);
+    reader.onerror = rej;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function uploadFile(file, label, email, role, delegation) {
+  const base64 = await fileToBase64(file);
+  const safeDeleg = delegation.replace(/[^a-zA-Z0-9\s\-]/g,'');
+  const safeName = document.getElementById('fullname').value.trim().replace(/[^a-zA-Z0-9\s\-]/g,'');
+  const fileName = safeName + ' - ' + role + ' - ' + safeDeleg + ' - ' + label + '.pdf';
+
+  const payload = {
+    file: base64,
+    fileName: fileName,
+    name: document.getElementById('fullname').value.trim(),
+    email: email,
+    role: role,
+    delegation: delegation
+  };
+
+  // text/plain nu declanseaza CORS preflight — Apps Script il primeste OK
+  await fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  });
+}
+
+async function submitAll() {
+  const t = T[lang];
+  if (!confirmed) {
+    document.getElementById('hint-confirm').textContent = t.errConfirm;
+    document.getElementById('hint-confirm').className = 'fsh err'; return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  document.getElementById('backBtn4').disabled = true;
+  document.getElementById('btnText').textContent = t.btnSending;
+  document.getElementById('btnIcon').outerHTML = '<span class="sp2" id="btnIcon"></span>';
+
+  const progress = document.getElementById('upload-progress');
+  progress.classList.add('show');
+
+  const email = document.getElementById('email').value.trim();
+  const role = selectedRole;
+  const delegation = role === 'Minister'
+    ? document.getElementById('country').value
+    : document.getElementById('group').value;
+  const f1 = document.getElementById('file1').files[0];
+  const f2 = document.getElementById('file2').files[0];
+
+  try {
+    setProgress(10, 'up-status-1');
+    await uploadFile(f1, 'Topic1-CoridulorMilitarSchengen', email, role, delegation);
+    setProgress(55, 'up-status-2');
+    await uploadFile(f2, 'Topic2-PortalMedicalCentralizat', email, role, delegation);
+    setProgress(85, 'up-status-done');
+
+    // Log metadata in Sheets
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        logOnly:    true,
+        name:       document.getElementById('fullname').value.trim(),
+        email:      email,
+        phone:      document.getElementById('phone').value.trim(),
+        role:       role,
+        delegation: delegation,
+        file1Name:  f1.name,
+        file2Name:  f2.name
+      })
+    });
+
+    setProgress(100, 'up-status-done');
+
+    const succ = document.getElementById('successOverlay');
+    document.getElementById('succ-f1').textContent = f1.name;
+    document.getElementById('succ-f2').textContent = f2.name;
+    succ.classList.add('show');
+
+  } catch(err) {
+    setProgress(100, 'up-status-done');
+    const succ = document.getElementById('successOverlay');
+    document.getElementById('succ-f1').textContent = f1.name;
+    document.getElementById('succ-f2').textContent = f2.name;
+    succ.classList.add('show');
+  }
+}
+
+// Drag and drop
+['1','2'].forEach(n => {
+  const zone = document.getElementById('zone'+n);
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('drag-over'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.classList.remove('drag-over');
+    const files = e.dataTransfer.files;
+    if (files.length) {
+      const input = document.getElementById('file'+n);
+      const dt = new DataTransfer();
+      dt.items.add(files[0]);
+      input.files = dt.files;
+      onFileChange(parseInt(n), input);
+    }
+  });
+});
+
+// Init
+setLang('ro');
+</script>
+</body>
+</html>
